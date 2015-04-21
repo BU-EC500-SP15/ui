@@ -9,7 +9,9 @@ urlpatterns = patterns('',
     # cloud splash
     url(r'^clouds', clouds),
     # marketplace
-    url(r'^market/(?P<project>.+)', market),
+    url(r'^market/(?P<project>.+)/$', market),
+    # # sidebar
+    # url(r'^market/(?P<project>.+)/(?P<ftext>.+)$', market),
 )
 ##Form Processing
 urlpatterns += patterns('',
@@ -20,6 +22,14 @@ urlpatterns += patterns('',
     ## DB dusting
     url(r'^create/(?P<object_class>.+)', create_object),
     url(r'^delete/(?P<object_class>.+)', delete_object),
+    # projects control
+#    url(r'^createProject', createProject),
+#    url(r'^deleteProject', deleteProject),
+#    # cluster control
+#    url(r'^createClusterAccount', createClusterAccount),
+#    url(r'^deleteClusterAccount', deleteClusterAccount),
+#    url(r'^createOSProject', createOSProject),
+#    url(r'^deleteOSProject', deleteOSProject),
 #    # vm control 
 #    url(r'^createVM', createVM),
 #    url(r'^deleteVM', deleteVM),

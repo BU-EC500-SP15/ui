@@ -13,6 +13,7 @@ import query_helpers as helpers
 # passed to template context in order to
 # render modal / button / table templates
 import html_helpers as html
+from models import Service
 
 
 ####################
@@ -62,16 +63,22 @@ def clouds(request):
                    'cloud_modals': html.cloud_modals(request), 
                    'createVMform': createVMform })
 
-def market(request, project):
+def market(request, project, ftext = 'all'):
+    
+    f = lambda x: True
     market_list = []
-    # for market in markets:
-    #     market_choice_list = []
-    #     for choice in dicts.test_
 
-    for market in dicts.test_market_list:
-        market_list.append(market)
+    market_list = Service.objects.all()
 
-    return HttpResponseRedirect('/')
+    #Filter Results!
+
+    if (ftext != 'all'):
+        f = lambda x: x.get_type() == ftext
+
+    market_list = filter(f, market_list)
+
+    return render(request, 'market.html', 
+            {'project': project, 'market_list': market_list})
 
 ################
 ## FORM VIEWS ##
