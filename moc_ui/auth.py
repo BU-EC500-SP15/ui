@@ -4,12 +4,22 @@ import glanceclient.v2.client as glclient
 import keystoneclient.v2_0.client as ksclient
 
 
-def loginUser(username, password, auth_url):
+# def loginUser(username, password, auth_url):
+#         """
+# 	Create keystone client for user; called on login
+# 	"""
+#         keystone = ksclient.Client(
+# 	        auth_url = "http://%s:5000/v2.0" % auth_url,
+# 		username = username,
+#       		password = password)
+# 	return keystone
+
+def loginUser(username, password):
         """
 	Create keystone client for user; called on login
 	"""
         keystone = ksclient.Client(
-	        auth_url = "http://%s:5000/v2.0" % auth_url,
+	        auth_url = "http://%s:5000/v2.0",
 		username = username,
       		password = password)
 	return keystone
